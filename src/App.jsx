@@ -4,6 +4,7 @@ import HomePage from './pages/HomePage'
 import CheckoutPages from './pages/checkout/CheckoutPages'
 import OrdersPage from './pages/OrdersPage'
 import Tracking from './pages/Tracking'
+import NotFound from './pages/NotFound'
 
 function App() {
   return (
@@ -11,8 +12,9 @@ function App() {
     <Routes>
       <Route index element={<HomePage />} />
       <Route path="/checkout" element={<CheckoutPages />} />
-      <Route path="/orders" element={<OrdersPage />}></Route>
-      <Route path='/tracking' element={<Tracking />}></Route>
+      <Route path="/orders" element={<OrdersPage />} />
+      <Route path='/tracking' element={<Tracking />} />
+      <Route path="*" element={<NotFound />} />
     </Routes>
     </>
   )
