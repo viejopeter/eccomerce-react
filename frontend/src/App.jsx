@@ -16,20 +16,20 @@ function App() {
     const fetchDataCar = async () => {
 
       try {
-        const response = await axios.get("/api/cart-items")
+        const response = await axios.get("/api/cart-items?expand=product")
         setCars(response.data)
       } catch (e) {
         console.error("Error fetching cart data:", e)
       }
     }
     fetchDataCar()
-  })
+  },[])
 
   return (
     <>
       <Routes>
         <Route index element={<HomePage cart={cart}/>} />
-        <Route path="/checkout" element={<CheckoutPages/>} />
+        <Route path="/checkout" element={<CheckoutPages cart={cart}/>} />
         <Route path="/orders" element={<OrdersPage cart={cart}/>} />
         <Route path='/tracking' element={<Tracking cart={cart}/>} />
         <Route path="*" element={<NotFound />} />
