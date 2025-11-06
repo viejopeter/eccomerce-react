@@ -7,29 +7,39 @@ import { useEffect,useState } from 'react'
 const HomePage = () => {
      
     const [products,setProducts] = useState([])
+    const [cart,setCars] = useState([])
 
     useEffect(() => {
           
-        const fetchData = async () => {
+        const fetchProducts = async () => {
 
             try{
                const response = await axios.get("http://localhost:3000/api/products")
                setProducts(response.data)
             }catch(e){
-                 console.error("Error fetching data:",e) 
+                 console.error("Error fetching products:",e) 
             }
         }
-        fetchData()
-    },[])
-    
 
+        const fetchDataCar = async () =>{
+
+            try{
+                const response = await axios.get("http://localhost:3000/api/cart-items")
+                setCars(response.data)
+            }catch(e){
+                console.error("Error fetching cart data:",e)
+            }
+        }
+        fetchDataCar()
+        fetchProducts()
+    },[])
     
 
     return (
         <>
             <title>Eccomerce Project</title>
             <link rel="icon" type="image/svg+xml" href="/images/home-favicon.png" />
-            <Header />
+            <Header cart={cart}/>
             <div className="home-page">
                 <div className="products-grid">
                     {products.map((product) => {
