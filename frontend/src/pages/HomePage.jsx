@@ -1,14 +1,28 @@
 
 import Header from '../components/Header.jsx'
-import { products } from '../../starting-code/data/products.js'
 import './HomePage.css'
 import  axios  from 'axios'
+import { useEffect,useState } from 'react'
 
 const HomePage = () => {
+     
+    const [products,setProducts] = useState([])
+
+    useEffect(() => {
+          
+        const fetchData = async () => {
+
+            try{
+               const response = await axios.get("http://localhost:3000/api/products")
+               setProducts(response.data)
+            }catch(e){
+                 console.error("Error fetching data:",e) 
+            }
+        }
+        fetchData()
+    },[])
     
-    axios.get("http://localhost:3000/api/products").then((response)=>{
-        console.log(response.data)
-    })
+
     
 
     return (
