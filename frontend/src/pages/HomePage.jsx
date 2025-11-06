@@ -14,7 +14,7 @@ const HomePage = () => {
         const fetchProducts = async () => {
 
             try{
-               const response = await axios.get("http://localhost:3000/api/products")
+               const response = await axios.get("/api/products")
                setProducts(response.data)
             }catch(e){
                  console.error("Error fetching products:",e) 
@@ -24,7 +24,7 @@ const HomePage = () => {
         const fetchDataCar = async () =>{
 
             try{
-                const response = await axios.get("http://localhost:3000/api/cart-items")
+                const response = await axios.get("/api/cart-items")
                 setCars(response.data)
             }catch(e){
                 console.error("Error fetching cart data:",e)
