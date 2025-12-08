@@ -4,7 +4,7 @@ import HomePage from './pages/home/HomePage'
 import CheckoutPages from './pages/checkout/CheckoutPages'
 import OrdersPage from './pages/orders/OrdersPage'
 import Tracking from './pages/Tracking'
-import NotFound from './pages/NotFound'
+import NotFoundPage from './pages/NotFoundPage'
 import { useEffect,useState } from 'react'
 import axios from 'axios'
 
@@ -31,8 +31,8 @@ function App() {
         <Route index element={<HomePage cart={cart}/>} />
         <Route path="/checkout" element={<CheckoutPages cart={cart}/>} />
         <Route path="/orders" element={<OrdersPage cart={cart}/>} />
-        <Route path='/tracking' element={<Tracking cart={cart}/>} />
-        <Route path="*" element={<NotFound />} />
+        <Route path='/tracking/:orderId/:productId' element={<Tracking cart={cart}/>} />
+        <Route path="*" element={<NotFoundPage cart={cart}/>} />
       </Routes>
     </>
   )
